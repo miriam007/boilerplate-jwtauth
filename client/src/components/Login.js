@@ -6,7 +6,7 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            errors: {}
+            errors: {},
         }
         this.handleInputChagne = this.handleInputChagne.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,7 @@ class Login extends Component {
         e.preventDefault();
         const user = {
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
         }
         console.log(user);
     }

@@ -8,7 +8,7 @@ class Register extends Component {
             email: '',
             password: '',
             password_confirm: '',
-            errors: {}
+            errors: {},
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handlSubmit = this.handleSubmit.bind(this);
@@ -22,11 +22,12 @@ class Register extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log('state')
         const user = {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            password_confirm: this.state.password_confirm
+            password_confirm: this.state.password_confirm,
         }
         console.log(user);
     }
