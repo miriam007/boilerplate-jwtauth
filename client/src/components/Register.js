@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
     constructor() {
@@ -9,10 +10,10 @@ class Register extends Component {
             password: '',
             password_confirm: '',
             errors: {},
-        }
+        };
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handlSubmit = this.handleSubmit.bind(this);
-    }
+        this.handleSubmit = this.handleSubmit.bind(this);
+    };
 
     handleInputChange(e) {
         this.setState({
@@ -22,12 +23,11 @@ class Register extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('state')
         const user = {
             name: this.state.name,
             email: this.state.email,
             password: this.state.password,
-            password_confirm: this.state.password_confirm,
+            password_confirm: this.state.password_confirm
         }
         console.log(user);
     }
@@ -79,6 +79,7 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">
+                    <Link to={'/home'}></Link>
                         Register User
                     </button>
                 </div>
