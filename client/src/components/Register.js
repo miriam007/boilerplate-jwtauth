@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { registerUser } from '../actions/authentication';
 
 class Register extends Component {
     constructor() {
@@ -29,7 +32,16 @@ class Register extends Component {
             password: this.state.password,
             password_confirm: this.state.password_confirm
         }
+        this.props.registerUser(user, this.props.history);
         console.log(user);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
     }
 
     render() {
@@ -79,7 +91,6 @@ class Register extends Component {
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">
-                    <Link to={'/home'}></Link>
                         Register User
                     </button>
                 </div>
@@ -89,4 +100,12 @@ class Register extends Component {
     }
 }
 
-export default Register;
+Register.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Register))
